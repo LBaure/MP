@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-success: #4caf50;
+  --color-dark-primary: #171b26;
+  --color-dark-primary-body: rgb(27, 38, 53);
+  --color-primary: #466692;
+  --color-secondary:#141414;
+  --color-accent: #C3C3C6;
+  --shadow-table: 0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+
+}
+:root {
+  font-size: 0.875rem;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}

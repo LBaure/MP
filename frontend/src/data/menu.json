@@ -1,0 +1,44 @@
+{
+  "menu": [
+    {
+      "title": "Inicio",
+      "id": "e53b9e62-77f8-4a84-b91e-38cf9f8e4183",
+      "icon": "Home",
+      "path": "/app"
+    },
+    {
+      "title": "Expedientes",
+      "id": "3b0b8a09-f0fc-4d7d-b6b4-34750dc7e6ff",
+      "icon": "Folder",
+      "children": [
+        {
+          "title": "Dashboard",
+          "id": "5dfdce92-0df3-4a02-b4a5-c96aa1e0a826",
+          "path": "/app/expedientes/dashboard"
+        },
+        {
+          "title": "Registro",
+          "id": "7d927f64-b13c-47c5-9cf4-918e3e4a9935",
+          "path": "/app/expedientes/registro"
+        }
+      ]
+    },
+    {
+      "title": "Seguridad",
+      "id": "b98a4bce-9cc9-4a07-b3e3-e899ed379a91",
+      "icon": "Shield",
+      "children": [
+        {
+          "title": "Usuarios",
+          "id": "290dc2d1-9fa2-45f6-b7aa-5859db455ec6",
+          "path": "/app/seguridad/usuarios"
+        },
+        {
+          "title": "Roles",
+          "id": "0ad3f0d3-f51c-4603-89b7-6dcda89b0fc5",
+          "path": "/app/seguridad/"
+        }
+      ]
+    }
+  ]
+}

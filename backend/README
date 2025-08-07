@@ -1,0 +1,91 @@
+📦src
+│
+├── 📁domain                  # Reglas del negocio (núcleo de la app)
+│   ├── 📁entities            # Entidades (modelos puros del dominio)
+│   │   └── Usuario.ts
+│   └── 📁repositories        # Interfaces de repositorio (abstracciones)
+│       └── UsuarioRepository.ts
+│
+├── 📁use-cases               # Casos de uso (aplican las reglas del dominio)
+│   └── 📁usuario
+│       ├── CrearUsuario.ts
+│       ├── ObtenerUsuario.ts
+│       ├── ActualizarUsuario.ts
+│       └── EliminarUsuario.ts
+│
+├── 📁infrastructure          # Infraestructura y detalles externos
+│   ├── 📁database            # Implementaciones de acceso a datos
+│   │   ├── 📁models          # Modelos de la base de datos (ej. Sequelize/Knex)
+│   │   │   └── UsuarioModel.ts
+│   │   └── 📁repositories    # Implementaciones concretas de repositorios
+│   │       └── UsuarioRepositoryImpl.ts
+│   └── 📁services            # Servicios externos (e.g. mail, auth, etc.)
+│
+├── 📁interfaces              # Interfaces de entrada (controllers, routes, etc.)
+│   ├── 📁controllers         # Lógica HTTP, llama a los casos de uso
+│   │   └── UsuarioController.ts
+│   ├── 📁routes              # Rutas de Express
+│   │   └── usuarioRoutes.ts
+│   └── 📁middlewares         # Middlewares (auth, error handler, etc.)
+│       └── authMiddleware.ts
+│
+├── 📁config                  # Configuraciones del sistema
+│   ├── db.ts
+│   ├── env.ts
+│   └── server.ts
+│
+├── 📁shared                  # Utilidades y código común
+│   ├── helpers.ts
+│   └── constants.ts
+│
+├── index.ts                 # Punto de entrada de la aplicación
+└── types.d.ts              # Tipado global opcional
+
+
+¿Qué sigue?
+Este árbol define una separación clara entre:
+
+Dominio: lógica del negocio independiente del framework.
+
+Casos de uso: orquestan procesos del dominio.
+
+Infraestructura: detalles técnicos como base de datos o servicios externos.
+
+Interfaces: capa de presentación o entrada (Express en este caso).
+
+
+
+
+
+
+
+
+
+
+a partir de esta tabla generame un script para insertar 2 o 3 registros 
+
+
+-- Tabla de usuarios
+CREATE TABLE usuarios (
+    guid CHAR(36) PRIMARY KEY,
+    nombres VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(20),
+    direccion VARCHAR(250),
+    contrasenia VARCHAR(255) NOT NULL,
+    fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    usuario_creacion CHAR(36),
+    fecha_modificacion DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    usuario_modificacion CHAR(36),
+    ultimo_inicio_sesion DATETIME DEFAULT NULL,
+    fecha_expiracion DATETIME DEFAULT NULL,
+    es_activo BOOLEAN DEFAULT TRUE
+);
+
+tambien creame una interfaz para javascript, usuando typescript
+
+generame el use-cases en una arquitectura limpia usando nodejs y express para consumir el CRUD de esta tabla, unicamente el use-case por ahora
+
+
+generame toda la estructura de como quedaria mi arbol de carpetas si uso arquitectura limpia para mi backend hecho con nodejs y express

@@ -1,0 +1,72 @@
+import { Request, Response } from 'express'
+import { CrearUsuario } from '../../use-cases/usuario/CrearUsuario'
+import { ObtenerUsuario } from '../../use-cases/usuario/ObtenerUsuario'
+import { ActualizarUsuario } from '../../use-cases/usuario/ActualizarUsuario'
+import { EliminarUsuario } from '../../use-cases/usuario/EliminarUsuario'
+
+export class UsuarioController {
+  // eslint-disable-next-line no-useless-constructor
+  constructor (
+    private crearUsuario: CrearUsuario,
+    private obtenerUsuario: ObtenerUsuario,
+    private actualizarUsuario: ActualizarUsuario,
+    private eliminarUsuario: EliminarUsuario
+  ) {}
+
+  async crear (req: Request, res: Response): Promise<Response> {
+    try {
+      const usuario = await this.crearUsuario.ejecutar(req.body)
+      return res.status(201).json(usuario)
+    } catch (error) {
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message })
+      } else {
+        return res.status(400).json({ error: 'Error desconocido' })
+      }
+    }
+  }
+
+  async obtener (req: Request, res: Response): Promise<Response> {
+    const guid = req.params.guid
+    try {
+      const usuario = await this.obtenerUsuario.ejecutar(guid)
+      if (!usuario) { return res.status(404).json({ message: 'Usuario no encontrado' }) }
+      return res.json(usuario)
+    } catch (error) {
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message })
+      } else {
+        return res.status(400).json({ error: 'Error desconocido' })
+      }
+    }
+  }
+
+  async actualizar (req: Request, res: Response): Promise<Response> {
+    const guid = req.params.guid
+    try {
+      const usuario = await this.actualizarUsuario.ejecutar(guid, req.body)
+      if (!usuario) { return res.status(404).json({ message: 'Usuario no encontrado' }) }
+      return res.json(usuario)
+    } catch (error) {
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message })
+      } else {
+        return res.status(400).json({ error: 'Error desconocido' })
+      }
+    }
+  }
+
+  async eliminar (req: Request, res: Response): Promise<Response> {
+    const guid = req.params.guid
+    try {
+      await this.eliminarUsuario.ejecutar(guid)
+      return res.status(204).send()
+    } catch (error) {
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message })
+      } else {
+        return res.status(400).json({ error: 'Error desconocido' })
+      }
+    }
+  }
+}

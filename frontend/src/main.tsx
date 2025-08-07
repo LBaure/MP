@@ -1,0 +1,18 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+import { BrowserRouter } from 'react-router-dom'
+import { UserProvider } from './context/useAuth.tsx'
+import { ToastContainer } from 'react-toastify'
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <UserProvider>
+        <App />
+        <ToastContainer position="top-right" theme="colored" />
+      </UserProvider>
+    </BrowserRouter>
+  </StrictMode>
+);
