@@ -30,7 +30,8 @@ const LoginForm = () => {
   } = useForm<LoginFormsInputs>({ resolver: yupResolver(validationSchema) });
 
   const handleLogin = async (form: LoginFormsInputs) => {
-    loginUser(form.userName, form.password);
+    // loginUser(form.userName, form.password);
+    navigate("/app/expedientes/dashboard");
   };
 
 
